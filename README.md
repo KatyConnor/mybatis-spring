@@ -22,7 +22,8 @@ Essentials
 ----------
 
 * [See the docs](http://mybatis.github.io/spring/)
-=======
+
+### 我的添加部分 
+
 # mybatis-spring
-mybatis-spring 源码，根据功能需求做一个源码扩展修改
->>>>>>> mygithub-origin/master
+mybatis-spring 源码，根据功能需求做一个源码扩展修改   mygithub-origin/master
