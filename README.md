@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 MyBatis Spring Adapter
 ======================
 
@@ -21,3 +22,7 @@ Essentials
 ----------
 
 * [See the docs](http://mybatis.github.io/spring/)
+=======
+# mybatis-spring
+mybatis-spring 源码，根据功能需求做一个源码扩展修改
+>>>>>>> mygithub-origin/master
