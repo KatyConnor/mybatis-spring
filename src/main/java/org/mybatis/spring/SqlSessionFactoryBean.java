@@ -27,6 +27,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.builder.xml.MapperSqlConfigBuilder;
 import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.cache.Cache;
@@ -82,6 +83,9 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
   private Configuration configuration;
 
   private Resource[] mapperLocations;
+
+  // add by @author wml 2018-05-23  mapperSql file
+  private Resource[] mapperSqlLocations;
 
   private DataSource dataSource;
 
@@ -312,6 +316,20 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
   }
 
   /**
+   * Set locations of MyBatis mapper sql files that are going to be merged into the {@code SqlSessionFactory}
+   * configuration at runtime.
+   *
+   * This is an alternative to specifying "&lt;sqlmapper&gt;" entries in an MyBatis config file.
+   * This property being based on Spring's resource abstraction also allows for specifying
+   * resource patterns here: e.g. "classpath*:sqlmap/*-.mapper".
+   *
+   * @param mapperSqlLocations location of MyBatis mapper  sql files
+   */
+  public void setMapperSqlLocations(Resource[] mapperSqlLocations) {
+    this.mapperSqlLocations = mapperSqlLocations;
+  }
+
+  /**
    * Set optional properties to be passed into the SqlSession configuration, as alternative to a
    * {@code &lt;properties&gt;} tag in the configuration xml file. This will be used to
    * resolve placeholders in the config file.
@@ -520,6 +538,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
 
     configuration.setEnvironment(new Environment(this.environment, this.transactionFactory, this.dataSource));
 
+    // 加载mapper 配置文件
     if (!isEmpty(this.mapperLocations)) {
       for (Resource mapperLocation : this.mapperLocations) {
         if (mapperLocation == null) {
@@ -541,6 +560,28 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
       LOGGER.debug(() -> "Property 'mapperLocations' was not specified or no matching resources found");
     }
 
+    // 加载mapperSql文件
+    if (!isEmpty(this.mapperSqlLocations)) {
+      for (Resource mapperLocation : this.mapperSqlLocations) {
+        if (mapperLocation == null) {
+          continue;
+        }
+
+        try {
+          MapperSqlConfigBuilder mapperSqlConfigBuilder = new MapperSqlConfigBuilder(configuration,mapperLocation.getFilename());
+          mapperSqlConfigBuilder.parse();
+        } catch (Exception e) {
+          throw new NestedIOException("Failed to parse mapping sql resource: '" + mapperLocation + "'", e);
+        } finally {
+          ErrorContext.instance().reset();
+        }
+        LOGGER.debug(() -> "Parsed mapper sql file: '" + mapperLocation + "'");
+      }
+    } else {
+      LOGGER.debug(() -> "Property 'mapperLocations' was not specified or no matching resources found");
+    }
+
+    // 返回 SqlSessionFactory
     return this.sqlSessionFactoryBuilder.build(configuration);
   }
 

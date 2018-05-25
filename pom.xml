@@ -34,69 +34,83 @@
   <description>An easy-to-use Spring bridge for MyBatis sql mapping framework.</description>
   <url>http://www.mybatis.org/spring/</url>
 
-  <contributors>
-    <contributor>
-      <name>Alex Rykov</name>
-      <email>Alex.Rykov@gmail.com</email>
-    </contributor>
-
-    <contributor>
-      <name>Andrius Juozapaitis</name>
-      <email>andriusj@gmail.com</email>
-    </contributor>
-
-    <contributor>
-      <name>Giovanni Cuccu</name>
-      <email>giovanni.cuccu@gmail.com</email>
-    </contributor>
-
-    <contributor>
-      <name>Kay Huber</name>
-      <email>kay.huber@gmail.com</email>
-    </contributor>
-
-    <contributor>
-      <name>Lishu Luo</name>
-      <email>lishu.luo@gmail.com</email>
-    </contributor>
-
-    <contributor>
-      <name>Michael Lanyon</name>
-      <email>lanyonm@gmail.com</email>
-    </contributor>
-
-    <contributor>
-      <name>Raj Nagappan</name>
-      <email>raj@velocitylabs.com</email>
-    </contributor>
-
-    <contributor>
-      <name>Tomas Pinos</name>
-      <email>tomas.pinos@gmail.com</email>
-    </contributor>
-  </contributors>
-
-  <scm>
-    <url>http://github.com/mybatis/spring</url>
-    <connection>scm:git:ssh://github.com/mybatis/spring.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/mybatis/spring.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-  <issueManagement>
-    <system>GitHub Issue Management</system>
-    <url>https://github.com/mybatis/spring/issues</url>
-  </issueManagement>
-  <ciManagement>
-    <system>Travis CI</system>
-    <url>https://travis-ci.org/mybatis/spring</url>
-  </ciManagement>
   <distributionManagement>
-    <site>
-      <id>gh-pages</id>
-      <name>Mybatis GitHub Pages</name>
-      <url>git:ssh://git@github.com/mybatis/spring.git?gh-pages#</url>
-    </site>
+    <repository>
+      <id>maven-releases</id>
+      <name>maven-releases</name>
+      <url>http://hx.nexus.cn:8083/nexus/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven-snapshots</id>
+      <name>maven-snapshots</name>
+      <url>http://hx.nexus.cn:8083/nexus/repository/maven-snapshots/</url>
+    </snapshotRepository>
   </distributionManagement>
+
+  <!--<contributors>-->
+    <!--<contributor>-->
+      <!--<name>Alex Rykov</name>-->
+      <!--<email>Alex.Rykov@gmail.com</email>-->
+    <!--</contributor>-->
+
+    <!--<contributor>-->
+      <!--<name>Andrius Juozapaitis</name>-->
+      <!--<email>andriusj@gmail.com</email>-->
+    <!--</contributor>-->
+
+    <!--<contributor>-->
+      <!--<name>Giovanni Cuccu</name>-->
+      <!--<email>giovanni.cuccu@gmail.com</email>-->
+    <!--</contributor>-->
+
+    <!--<contributor>-->
+      <!--<name>Kay Huber</name>-->
+      <!--<email>kay.huber@gmail.com</email>-->
+    <!--</contributor>-->
+
+    <!--<contributor>-->
+      <!--<name>Lishu Luo</name>-->
+      <!--<email>lishu.luo@gmail.com</email>-->
+    <!--</contributor>-->
+
+    <!--<contributor>-->
+      <!--<name>Michael Lanyon</name>-->
+      <!--<email>lanyonm@gmail.com</email>-->
+    <!--</contributor>-->
+
+    <!--<contributor>-->
+      <!--<name>Raj Nagappan</name>-->
+      <!--<email>raj@velocitylabs.com</email>-->
+    <!--</contributor>-->
+
+    <!--<contributor>-->
+      <!--<name>Tomas Pinos</name>-->
+      <!--<email>tomas.pinos@gmail.com</email>-->
+    <!--</contributor>-->
+  <!--</contributors>-->
+
+  <!--<scm>-->
+    <!--<url>http://github.com/mybatis/spring</url>-->
+    <!--<connection>scm:git:ssh://github.com/mybatis/spring.git</connection>-->
+    <!--<developerConnection>scm:git:ssh://git@github.com/mybatis/spring.git</developerConnection>-->
+    <!--<tag>HEAD</tag>-->
+  <!--</scm>-->
+
+  <!--<issueManagement>-->
+    <!--<system>GitHub Issue Management</system>-->
+    <!--<url>https://github.com/mybatis/spring/issues</url>-->
+  <!--</issueManagement>-->
+  <!--<ciManagement>-->
+    <!--<system>Travis CI</system>-->
+    <!--<url>https://travis-ci.org/mybatis/spring</url>-->
+  <!--</ciManagement>-->
+  <!--<distributionManagement>-->
+    <!--<site>-->
+      <!--<id>gh-pages</id>-->
+      <!--<name>Mybatis GitHub Pages</name>-->
+      <!--<url>git:ssh://git@github.com/mybatis/spring.git?gh-pages#</url>-->
+    <!--</site>-->
+  <!--</distributionManagement>-->
 
   <properties>
     <clirr.comparisonVersion>1.2.2</clirr.comparisonVersion>
@@ -288,24 +302,24 @@
 
   </dependencies>
 
-  <repositories>
-    <repository>
-      <id>sonatype-oss-snapshots</id>
-      <name>Sonatype OSS Snapshots Repository</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>spring-milestones</id>
-      <name>Spring Milestones</name>
-      <url>https://repo.spring.io/libs-milestone</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  <!--<repositories>-->
+    <!--<repository>-->
+      <!--<id>sonatype-oss-snapshots</id>-->
+      <!--<name>Sonatype OSS Snapshots Repository</name>-->
+      <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+      <!--<snapshots>-->
+        <!--<enabled>true</enabled>-->
+      <!--</snapshots>-->
+    <!--</repository>-->
+    <!--<repository>-->
+      <!--<id>spring-milestones</id>-->
+      <!--<name>Spring Milestones</name>-->
+      <!--<url>https://repo.spring.io/libs-milestone</url>-->
+      <!--<snapshots>-->
+        <!--<enabled>false</enabled>-->
+      <!--</snapshots>-->
+    <!--</repository>-->
+  <!--</repositories>-->
 
   <build>
     <plugins>
